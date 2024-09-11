@@ -1,0 +1,6 @@
+@Koton.Catalog_HostAddress = http://localhost:5268
+
+GET {{Koton.Catalog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
