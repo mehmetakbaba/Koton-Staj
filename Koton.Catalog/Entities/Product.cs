@@ -11,5 +11,6 @@ namespace Koton.Catalog.Entities
         public string ProductName { get; set; } = default!;
         public decimal ProductPrice { get; set; }
         public decimal ProductQuantity { get; set; }
+        public TYPE Type { get; set; }
     }
 }
