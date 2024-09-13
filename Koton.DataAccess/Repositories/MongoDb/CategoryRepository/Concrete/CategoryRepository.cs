@@ -1,18 +1,12 @@
-﻿using MongoDB.Driver;
-using Koton.DataAccess.Repositories.MongoDb.Abstract;
-using Koton.DataAccess.Repositories.MongoDb.CategoryRepository;
+﻿using Koton.DataAccess.Repositories.MongoDb.CategoryRepository.Abstract;
 using Koton.Entity.Entities.Concrete;
+using MongoDB.Driver;
 
-namespace Koton.DataAccess.Repositories.MongoDb.Concrete
+namespace Koton.DataAccess.Repositories.MongoDb.CategoryRepository.Concrete
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository(IMongoDatabase database, string collectionName) : ICategoryRepository
     {
-        private readonly IMongoCollection<Category> _collection;
-
-        public CategoryRepository(IMongoDatabase database, string collectionName)
-        {
-            _collection = database.GetCollection<Category>(collectionName);
-        }
+        private readonly IMongoCollection<Category> _collection = database.GetCollection<Category>(collectionName);
 
         public async Task<List<Category>> GetAllAsync()
         {

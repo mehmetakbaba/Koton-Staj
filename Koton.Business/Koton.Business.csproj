@@ -17,9 +17,4 @@
     <ProjectReference Include="..\Koton.Entity\Koton.Entity.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Product\Abstract\" />
-    <Folder Include="Services\Product\Concrete\" />
-  </ItemGroup>
-
 </Project>

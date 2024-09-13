@@ -1,10 +1,8 @@
-﻿using MongoDB.Bson;
+﻿using Koton.DataAccess.Repositories.MongoDb.GenericRepository.Abstract;
+using MongoDB.Bson;
 using MongoDB.Driver;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Koton.DataAccess.Repositories.MongoDb.Abstract;
 
-namespace Koton.DataAccess.Repositories.MongoDb.Concrete
+namespace Koton.DataAccess.Repositories.MongoDb.GenericRepository.Concrete
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

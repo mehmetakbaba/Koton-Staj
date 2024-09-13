@@ -1,4 +1,4 @@
-﻿namespace Koton.DataAccess.Repositories.MongoDb.Abstract
+﻿namespace Koton.DataAccess.Repositories.MongoDb.GenericRepository.Abstract
 {
     public interface IGenericRepository<T>  where T : class
     {
