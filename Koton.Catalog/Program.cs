@@ -44,7 +44,7 @@ builder.Services.AddScoped<ICategoryRepository>(sp =>
     var settings = sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
     var database = sp.GetRequiredService<IMongoDatabase>();
     return new CategoryRepository(database, settings.CategoryCollectionName);
-});
+}); 
 
 
 builder.Services.AddAutoMapper(typeof(GeneralMapper).Assembly);
