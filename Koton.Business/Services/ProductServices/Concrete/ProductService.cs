@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Koton.Business.Services.ProductServices.Abstract;
-using Koton.Core;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductRepository.Abstract;
+using Koton.Catalog.Entity.Entities.Concrete;
 using Koton.Core.Dtos.Concrete.ProductDtos;
-using Koton.DataAccess.Repositories.MongoDb.ProductRepository.Abstract;
-using Koton.Entity.Entities.Concrete;
+using Koton.Shared.Response;
 
-namespace Koton.Business.Services.ProductServices.Concrete
+namespace Koton.Catalog.Business.Services.ProductServices.Concrete
 {
     public class ProductService(IProductRepository productRepository, IMapper mapper) : IProductService
     {

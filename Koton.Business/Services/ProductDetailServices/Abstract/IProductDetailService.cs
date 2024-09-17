@@ -1,13 +1,7 @@
-﻿using Koton.Core.Dtos.Concrete.ProductDtos;
-using Koton.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Koton.Core.Dtos.Concrete.ProdutDetailDtos;
+﻿using Koton.Core.Dtos.Concrete.ProdutDetailDtos;
+using Koton.Shared.Response;
 
-namespace Koton.Business.Services.ProductDetailServices.Abstract
+namespace Koton.Catalog.Business.Services.ProductDetailServices.Abstract
 {
     public interface IProductDetailDetailService
     {

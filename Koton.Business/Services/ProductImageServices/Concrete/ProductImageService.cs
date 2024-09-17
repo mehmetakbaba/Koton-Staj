@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Koton.Business.Services.ProductImageServices.Abstract;
-using Koton.Core;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductImageRepository.Abstract;
+using Koton.Catalog.Entity.Entities.Concrete;
 using Koton.Core.Dtos.Concrete.ProductImageDtos;
 using Koton.Core.Dtos.Concrete.ProdutDetailDtos;
-using Koton.DataAccess.Repositories.MongoDb.ProductImageRepository.Abstract;
-using Koton.DataAccess.Repositories.MongoDb.ProductRepository.Concrete;
-using Koton.Entity.Entities.Concrete;
+using Koton.Shared.Response;
 
-namespace Koton.Business.Services.ProductImageServices.Concrete
+namespace Koton.Catalog.Business.Services.ProductImageServices.Concrete
 {
     public class ProductImageService(IProductImageRepository productImageRepository, IMapper mapper) : IProductImageService
     {
@@ -49,7 +43,7 @@ namespace Koton.Business.Services.ProductImageServices.Concrete
             }
         }
 
-        public async Task<Response<bool>> UpdateProductImageAsync(string id, UpdateProductDetailDto productImageDto)
+        public async Task<Response<bool>> UpdateProductImageAsync(string id, UpdateProductImageDto productImageDto)
         {
             var existingProductImage = await productImageRepository.GetByIdAsync(id);
 

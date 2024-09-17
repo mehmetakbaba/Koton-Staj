@@ -1,10 +1,10 @@
-﻿using Koton.Entity.Entities.Abstract;
+﻿using Koton.Catalog.Entity.Entities.Abstract;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Koton.Entity.Entities.Concrete;
+namespace Koton.Catalog.Entity.Entities.Concrete;
 
-    public class ProductImage : IEntity<string>
+public class ProductImage : IEntity<string>
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

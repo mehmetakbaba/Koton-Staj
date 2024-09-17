@@ -1,7 +1,7 @@
-﻿using Koton.DataAccess.Repositories.MongoDb.GenericRepository.Abstract;
-using Koton.Entity.Entities.Concrete;
+﻿using Koton.Catalog.DataAccess.Repositories.MongoDb.GenericRepository.Abstract;
+using Koton.Catalog.Entity.Entities.Concrete;
 
-namespace Koton.DataAccess.Repositories.MongoDb.ProductRepository.Abstract
+namespace Koton.Catalog.DataAccess.Repositories.MongoDb.ProductRepository.Abstract
 {
     public interface IProductRepository : IGenericRepository<Product>
     {

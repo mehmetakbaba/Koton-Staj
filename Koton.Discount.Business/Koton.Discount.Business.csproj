@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Koton.Discount.Core\Koton.Discount.Core.csproj" />
+    <ProjectReference Include="..\Koton.Discount.DataAccess\Koton.Discount.DataAccess.csproj" />
+    <ProjectReference Include="..\Koton.Discount.Entity\Koton.Discount.Entity.csproj" />
+    <ProjectReference Include="..\Koton.Shared\Koton.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

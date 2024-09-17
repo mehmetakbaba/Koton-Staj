@@ -1,27 +1,29 @@
-﻿using Koton.Business.Mappings;
-using Koton.Business.Services.CategoryServices.Abstract;
-using Koton.Business.Services.CategoryServices.Concrete;
-using Koton.Business.Services.ProductDetailServices.Abstract;
-using Koton.Business.Services.ProductDetailServices.Concrete;
+﻿using System.Reflection;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Koton.Business.Services.ProductImageServices.Abstract;
 using Koton.Business.Services.ProductServices.Abstract;
-using Koton.Business.Services.ProductServices.Concrete;
+using Koton.Catalog.Business.Mappings;
+using Koton.Catalog.Business.Services.CategoryServices.Abstract;
+using Koton.Catalog.Business.Services.CategoryServices.Concrete;
+using Koton.Catalog.Business.Services.ProductDetailServices.Abstract;
+using Koton.Catalog.Business.Services.ProductDetailServices.Concrete;
+using Koton.Catalog.Business.Services.ProductImageServices.Concrete;
+using Koton.Catalog.Business.Services.ProductServices.Concrete;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.CategoryRepository.Abstract;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.CategoryRepository.Concrete;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductDetailRepository.Abstract;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductDetailRepository.Concrete;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductImageRepository.Abstract;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductImageRepository.Concrete;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductRepository.Abstract;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductRepository.Concrete;
 using Koton.Core.Settings;
-using Koton.DataAccess.Repositories.MongoDb.CategoryRepository;
-using Koton.DataAccess.Repositories.MongoDb.CategoryRepository.Abstract;
-using Koton.DataAccess.Repositories.MongoDb.CategoryRepository.Concrete;
-using Koton.DataAccess.Repositories.MongoDb.ProductDetailRepository.Abstract;
-using Koton.DataAccess.Repositories.MongoDb.ProductDetailRepository.Concrete;
-using Koton.DataAccess.Repositories.MongoDb.ProductImageRepository.Abstract;
-using Koton.DataAccess.Repositories.MongoDb.ProductImageRepository.Concrete;
-using Koton.DataAccess.Repositories.MongoDb.ProductRepository;
-using Koton.DataAccess.Repositories.MongoDb.ProductRepository.Abstract;
-using Koton.DataAccess.Repositories.MongoDb.ProductRepository.Concrete;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace Koton.Business.Extensions
+namespace Koton.Catalog.Business.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -82,7 +84,7 @@ namespace Koton.Business.Extensions
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductDetailDetailService, ProductDetailService>();
-            services.AddScoped<IProductImageService, IProductImageService>();
+            services.AddScoped<IProductImageService, ProductImageService>();
 
            
 
@@ -92,6 +94,13 @@ namespace Koton.Business.Extensions
         public static IServiceCollection AddAutoMapperConfiguration(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(GeneralMapper).Assembly);
+            return services;
+        }
+
+        public static IServiceCollection AddFluentValidationConfiguration(this IServiceCollection services)
+        {
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             return services;
         }
     }

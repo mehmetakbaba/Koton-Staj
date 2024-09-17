@@ -1,9 +1,9 @@
-﻿
-using Koton.DataAccess.Repositories.MongoDb.ProductDetailRepository.Abstract;
-using Koton.Entity.Entities.Concrete;
+﻿using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductDetailRepository.Abstract;
+using Koton.Catalog.Entity.Entities.Concrete;
+
 using MongoDB.Driver;
 
-namespace Koton.DataAccess.Repositories.MongoDb.ProductDetailRepository.Concrete
+namespace Koton.Catalog.DataAccess.Repositories.MongoDb.ProductDetailRepository.Concrete
 {
     public class ProductDetailRepository(IMongoDatabase database, string collectionName) : IProductDetailRepository
     {

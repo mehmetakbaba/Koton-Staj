@@ -1,8 +1,9 @@
-﻿using Koton.DataAccess.Repositories.MongoDb.CategoryRepository.Abstract;
-using Koton.Entity.Entities.Concrete;
+﻿using Koton.Catalog.DataAccess.Repositories.MongoDb.CategoryRepository.Abstract;
+using Koton.Catalog.Entity.Entities.Concrete;
+
 using MongoDB.Driver;
 
-namespace Koton.DataAccess.Repositories.MongoDb.CategoryRepository.Concrete
+namespace Koton.Catalog.DataAccess.Repositories.MongoDb.CategoryRepository.Concrete
 {
     public class CategoryRepository(IMongoDatabase database, string collectionName) : ICategoryRepository
     {
