@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Koton.Order.Aplication.Features.CQRS.Commands.AddressCommands;
 using Koton.Order.Aplication.Interfaces;
 using Koton.Order.Domain.Entities;
+using Koton.Order.Domain.Entities.Concrete;
 
 namespace Koton.Order.Aplication.Features.CQRS.Handlers.AddressHandlers
 {

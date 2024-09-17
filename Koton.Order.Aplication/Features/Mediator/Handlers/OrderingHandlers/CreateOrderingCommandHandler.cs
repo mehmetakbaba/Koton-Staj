@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Koton.Order.Aplication.Features.Mediator.Commands.OrderingCommands;
 using Koton.Order.Aplication.Interfaces;
 using Koton.Order.Domain.Entities;
+using Koton.Order.Domain.Entities.Concrete;
 
 namespace Koton.Order.Aplication.Features.Mediator.Handlers.OrderingHandlers
 {

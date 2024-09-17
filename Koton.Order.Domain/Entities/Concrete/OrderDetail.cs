@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Koton.Catalog.Entity.Entities.Abstract;
+﻿using Koton.Order.Domain.Entities.Abstract;
 
-namespace Koton.Order.Domain.Entities
+namespace Koton.Order.Domain.Entities.Concrete
 {
     public class OrderDetail : IEntity<int>
     {

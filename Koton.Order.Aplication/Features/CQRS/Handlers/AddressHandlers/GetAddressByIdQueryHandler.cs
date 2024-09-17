@@ -7,6 +7,7 @@ using Koton.Order.Aplication.Features.CQRS.Queries.AddressQueries;
 using Koton.Order.Aplication.Features.CQRS.Results.AddressResults;
 using Koton.Order.Aplication.Interfaces;
 using Koton.Order.Domain.Entities;
+using Koton.Order.Domain.Entities.Concrete;
 
 namespace Koton.Order.Aplication.Features.CQRS.Handlers.AddressHandlers
 {

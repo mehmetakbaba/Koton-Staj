@@ -7,6 +7,7 @@ using Koton.Order.Aplication.Features.Mediator.Queries.OrderingQueries;
 using Koton.Order.Aplication.Features.Mediator.Results.OrderingResults;
 using Koton.Order.Aplication.Interfaces;
 using Koton.Order.Domain.Entities;
+using Koton.Order.Domain.Entities.Concrete;
 using MediatR;
 
 namespace Koton.Order.Aplication.Features.Mediator.Handlers.OrderingHandlers

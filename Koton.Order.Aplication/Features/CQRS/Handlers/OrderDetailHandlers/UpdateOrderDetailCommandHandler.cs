@@ -1,6 +1,7 @@
 ﻿using Koton.Order.Aplication.Features.CQRS.Commands.OrderDetailCommands;
 using Koton.Order.Aplication.Interfaces;
 using Koton.Order.Domain.Entities;
+using Koton.Order.Domain.Entities.Concrete;
 
 namespace Koton.Order.Aplication.Features.CQRS.Handlers.OrderDetailHandlers
 {

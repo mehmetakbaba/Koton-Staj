@@ -1,7 +1,9 @@
 ﻿
 
 
-namespace Koton.Order.Domain.Entities
+using Koton.Order.Domain.Entities.Abstract;
+
+namespace Koton.Order.Domain.Entities.Concrete
 {
     public class Ordering : IEntity<int>
     {

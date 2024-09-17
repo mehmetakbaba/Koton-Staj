@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Koton.Order.Domain.Entities;
+using Koton.Order.Domain.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 namespace Koton.Order.Persistence.Context

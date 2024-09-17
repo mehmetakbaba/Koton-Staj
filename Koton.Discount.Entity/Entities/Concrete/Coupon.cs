@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Koton.Catalog.Entity.Entities.Abstract;
+using Koton.Discount.Entity.Entities.Abstract;
+
 
 namespace Koton.Discount.Entity.Entities.Concrete
 {

@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Koton.DataAccess\Koton.Catalog.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Entities\Abstract\" />
-  </ItemGroup>
-
 </Project>

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Koton.Catalog.Entity.Entities.Abstract;
+﻿
 
-namespace Koton.Order.Domain.Entities
+using Koton.Order.Domain.Entities.Abstract;
+
+namespace Koton.Order.Domain.Entities.Concrete
 {
     public class Address : IEntity<int>
     {

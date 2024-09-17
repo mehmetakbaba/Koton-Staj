@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Koton.Order.Domain.Entities.Concrete;
 
 namespace Koton.Order.Aplication.Features.CQRS.Handlers.OrderDetailHandlers
 {

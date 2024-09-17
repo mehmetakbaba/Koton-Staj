@@ -41,13 +41,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastucture", "Infrastuct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{DDBA449E-41AF-42DB-9B2C-A839A2AC7160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koton.Order.Domain", "Koton.Order.Domain\Koton.Order.Domain.csproj", "{0DE23351-6550-49B1-93A6-43C93F4225F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koton.Order.Domain", "Koton.Order.Domain\Koton.Order.Domain.csproj", "{0DE23351-6550-49B1-93A6-43C93F4225F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koton.Order.Aplication", "Koton.Order.Aplication\Koton.Order.Aplication.csproj", "{60BD0F17-D035-48B2-9003-89447B3AD367}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koton.Order.Aplication", "Koton.Order.Aplication\Koton.Order.Aplication.csproj", "{60BD0F17-D035-48B2-9003-89447B3AD367}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koton.Order.Persistence", "Koton.Order.Persistence\Koton.Order.Persistence.csproj", "{E5C6676D-3CD4-4CD3-8F69-CFFADB5207A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koton.Order.Persistence", "Koton.Order.Persistence\Koton.Order.Persistence.csproj", "{E5C6676D-3CD4-4CD3-8F69-CFFADB5207A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koton.Order.Api", "Koton.Order.Api\Koton.Order.Api.csproj", "{CFCF8AFA-E935-4062-9F23-EDEBA20170CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koton.Order.Api", "Koton.Order.Api\Koton.Order.Api.csproj", "{CFCF8AFA-E935-4062-9F23-EDEBA20170CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{624D009B-3FE7-4571-BEBD-A85DA881C17D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koton.IdentityServer", "IdentityServer\Koton.IdentityServer.csproj", "{1E06A719-F92D-4691-9C3E-EBA3149D1537}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +119,10 @@ Global
 		{CFCF8AFA-E935-4062-9F23-EDEBA20170CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFCF8AFA-E935-4062-9F23-EDEBA20170CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFCF8AFA-E935-4062-9F23-EDEBA20170CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E06A719-F92D-4691-9C3E-EBA3149D1537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E06A719-F92D-4691-9C3E-EBA3149D1537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E06A719-F92D-4691-9C3E-EBA3149D1537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E06A719-F92D-4691-9C3E-EBA3149D1537}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -142,6 +150,8 @@ Global
 		{60BD0F17-D035-48B2-9003-89447B3AD367} = {7F3A9101-5DF4-48D4-9928-C68978689B47}
 		{E5C6676D-3CD4-4CD3-8F69-CFFADB5207A0} = {2CFB701C-C914-43DC-A314-F78F93AAC626}
 		{CFCF8AFA-E935-4062-9F23-EDEBA20170CF} = {DDBA449E-41AF-42DB-9B2C-A839A2AC7160}
+		{624D009B-3FE7-4571-BEBD-A85DA881C17D} = {57329F3F-7231-4F18-99EA-B7E019298F02}
+		{1E06A719-F92D-4691-9C3E-EBA3149D1537} = {624D009B-3FE7-4571-BEBD-A85DA881C17D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CD669B0C-D26D-4EAF-A4B5-E2CA3430982D}
