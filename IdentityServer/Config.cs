@@ -1,8 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
-using IdentityServer4.Models;
+﻿using IdentityServer4.Models;
 using System.Collections.Generic;
 using IdentityServer4;
 
@@ -14,25 +10,21 @@ namespace IdentityServer
         {
             new ApiResource("ResourceCatalog")
             {
-                Scopes = { "CatalogFullPermission","CatalogReadPermission" }
+                Scopes = { "CatalogFullPermission", "CatalogReadPermission" }
             },
-            new ApiResource("ResuourceDiscount")
+            new ApiResource("ResourceDiscount")
             {
                 Scopes = { "DiscountFullPermission" },
-
             },
-            new ApiResource("ResuourceOrder")
+            new ApiResource("ResourceOrder")
             {
-            Scopes = { "OrderFullPermission" },
-
+                Scopes = { "OrderFullPermission" },
             },
-            new ApiResource("ResuourceBasket")
+            new ApiResource("ResourceBasket")
             {
                 Scopes = { "BasketFullPermission" },
-
             },
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
-
         };
 
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
@@ -44,14 +36,12 @@ namespace IdentityServer
 
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
         {
-            new ApiScope("CatalogFullPermission","Full authority for catalog operations"),
-            new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
-            new ApiScope("DiscountFullPermission","Full authority for discount operations"),
-            new ApiScope("OrderFullPermission","Full authority for order operations"),
-            new ApiScope("BasketFullPermission","Full authority for order operations"),
+            new ApiScope("CatalogFullPermission", "Full authority for catalog operations"),
+            new ApiScope("CatalogReadPermission", "Reading authority for catalog operations"),
+            new ApiScope("DiscountFullPermission", "Full authority for discount operations"),
+            new ApiScope("OrderFullPermission", "Full authority for order operations"),
+            new ApiScope("BasketFullPermission", "Full authority for basket operations"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
-
-
         };
 
         public static IEnumerable<Client> Clients => new Client[]
@@ -61,18 +51,17 @@ namespace IdentityServer
                 ClientId = "KotonVisitorId",
                 ClientName = "Koton Shop Visitor User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                ClientSecrets = {new Secret("kotonsecret".Sha256())},
-                AllowedScopes = {"CatalogFullPermission","DiscountFullPermissio"}
+                ClientSecrets = { new Secret("kotonsecret".Sha256()) },
+                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission" }
             },
             new Client
             {
                 ClientId = "KotonMemberId",
-                ClientName = "Koton Shop Memmber User",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
-                ClientSecrets = {new Secret("kotonsecret".Sha256())},
-                AllowedScopes = {"CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission","BasketFullPermission" }
+                ClientName = "Koton Shop Member User",
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                ClientSecrets = { new Secret("kotonsecret".Sha256()) },
+                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission", "BasketFullPermission" }
             }
         };
-
     }
 }

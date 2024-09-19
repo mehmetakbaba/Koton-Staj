@@ -1,15 +1,11 @@
 ﻿using System.Threading.Tasks;
 using IdentityServer.Models;
-using IdentityServer4;
 using Koton.IdentityServer.Dtos;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Koton.IdentityServer.Controllers
 {
-    [Authorize(IdentityServerConstants.LocalApi.PolicyName)]
     [Route("api/[controller]")]
     [ApiController]
     public class RegisterController : ControllerBase
@@ -22,9 +18,14 @@ namespace Koton.IdentityServer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UserRegister(UserRegisterDto userRegisterDto)
+        public async Task<IActionResult> UserRegister([FromBody] UserRegisterDto userRegisterDto)
         {
-            var values = new ApplicationUser()
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new ApplicationUser()
             {
                 UserName = userRegisterDto.UserName,
                 Email = userRegisterDto.Email,
@@ -32,16 +33,21 @@ namespace Koton.IdentityServer.Controllers
                 Surname = userRegisterDto.Surname
             };
 
-            var result = await _userManager.CreateAsync(values, userRegisterDto.Password);
+            var result = await _userManager.CreateAsync(user, userRegisterDto.Password);
 
             if (result.Succeeded)
             {
-                return Ok("User created successfully.");
+                
+                await _userManager.AddToRoleAsync(user, "Member");
+                return Ok(new { Message = "User created successfully." });
             }
 
-            
-            return BadRequest(result.Errors);
-        }
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
 
+            return BadRequest(ModelState);
+        }
     }
 }

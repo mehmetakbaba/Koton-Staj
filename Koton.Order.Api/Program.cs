@@ -10,6 +10,12 @@ builder.Services.AddDbContext<OrderContext>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddApplicationServices(builder.Configuration);
 
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("OrderPolicy", policy =>
+//        policy.RequireAuthenticatedUser()
+//            .RequireClaim("scope", "OrderFullPermission"));
+//});
 
 
 

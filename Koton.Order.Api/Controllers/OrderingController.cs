@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Koton.Order.Api.Controllers
-{
+{   //[Authorize(Policy = "OrderPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderingController(IMediator mediator) : ControllerBase
