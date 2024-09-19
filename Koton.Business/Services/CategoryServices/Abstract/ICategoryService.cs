@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Koton.Core;
-using Koton.Core.Dtos.Concrete.CategoryDtos;
+﻿using Koton.Core.Dtos.Concrete.CategoryDtos;
+using Koton.Shared.Response;
 
-namespace Koton.Business.Services.CategoryServices.Abstract
+namespace Koton.Catalog.Business.Services.CategoryServices.Abstract
 {
     public interface ICategoryService
     {

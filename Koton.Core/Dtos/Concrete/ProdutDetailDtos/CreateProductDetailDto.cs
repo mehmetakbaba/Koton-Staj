@@ -6,6 +6,6 @@ namespace Koton.Core.Dtos.Concrete.ProdutDetailDtos;
 {
         
         public string ProductDetailDescription { get; set; } = default!;
-        public string ProductId { get; set; }
+        public string ProductId { get; set; } = default!;
 }
 

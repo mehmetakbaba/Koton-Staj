@@ -1,8 +1,8 @@
-﻿using Koton.Entity.Entities.Abstract;
+﻿using Koton.Catalog.Entity.Entities.Abstract;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Koton.Entity.Entities.Concrete;
+namespace Koton.Catalog.Entity.Entities.Concrete;
     public class Product : IEntity<string>
     {
         [BsonId]

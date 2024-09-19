@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Koton.DataAccess.Repositories.MongoDb.ProductImageRepository.Abstract;
-using Koton.Entity.Entities.Concrete;
-using MongoDB.Bson.Serialization;
+﻿using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductImageRepository.Abstract;
+using Koton.Catalog.Entity.Entities.Concrete;
 using MongoDB.Driver;
 
-namespace Koton.DataAccess.Repositories.MongoDb.ProductImageRepository.Concrete
+namespace Koton.Catalog.DataAccess.Repositories.MongoDb.ProductImageRepository.Concrete
 {
     public class ProductImageRepository(IMongoDatabase database, string collectionName) : IProductImageRepository
     {

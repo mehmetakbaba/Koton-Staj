@@ -1,17 +1,13 @@
-﻿using Koton.DataAccess.Repositories.MongoDb.GenericRepository.Abstract;
+﻿using Koton.Catalog.DataAccess.Repositories.MongoDb.GenericRepository.Abstract;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace Koton.DataAccess.Repositories.MongoDb.GenericRepository.Concrete
+namespace Koton.Catalog.DataAccess.Repositories.MongoDb.GenericRepository.Concrete
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    internal class GenericRepository<T>(IMongoDatabase database, string collectionName) : IGenericRepository<T>
+        where T : class
     {
-        private readonly IMongoCollection<T> _collection;
-
-        public GenericRepository(IMongoDatabase database, string collectionName)
-        {
-            _collection = database.GetCollection<T>(collectionName);
-        }
+        private readonly IMongoCollection<T> _collection = database.GetCollection<T>(collectionName);
 
         public async Task<List<T>> GetAllAsync() => await _collection.Find(new BsonDocument()).ToListAsync();
 

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using Koton.Catalog.Entity.Entities.Concrete;
 using Koton.Core.Dtos.Concrete.CategoryDtos;
 using Koton.Core.Dtos.Concrete.ProductDtos;
 using Koton.Core.Dtos.Concrete.ProductImageDtos;
 using Koton.Core.Dtos.Concrete.ProdutDetailDtos;
-using Koton.Entity.Entities.Concrete;
 
-namespace Koton.Business.Mappings
+namespace Koton.Catalog.Business.Mappings
 {
     public class GeneralMapper : Profile
     {
@@ -24,7 +24,7 @@ namespace Koton.Business.Mappings
             CreateMap<ProductImage, CreateProductImageDto>().ReverseMap();
             CreateMap<ProductImage, GetProductImageDto>().ReverseMap();
             CreateMap<ProductImage, ResultProductImageDto>().ReverseMap();
-            CreateMap<ProductImage, UpdateProductImage>().ReverseMap();
+            CreateMap<ProductImage, UpdateProductImageDto>().ReverseMap();
 
             CreateMap<ProductDetail, CreateProductDetailDto>().ReverseMap();
             CreateMap<ProductDetail, GetProductDetailDto>().ReverseMap();

@@ -1,18 +1,15 @@
 ﻿using AutoMapper;
-using Koton.Entity.Entities.Concrete;
-using Koton.Core;
+using Koton.Catalog.Business.Services.CategoryServices.Abstract;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.CategoryRepository.Abstract;
+using Koton.Catalog.Entity.Entities.Concrete;
 using Koton.Core.Dtos.Concrete.CategoryDtos;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Koton.Business.Services.CategoryServices.Abstract;
-using Koton.DataAccess.Repositories.MongoDb.CategoryRepository;
-using Koton.DataAccess.Repositories.MongoDb.CategoryRepository.Abstract;
+using Koton.Shared.Response;
 
-namespace Koton.Business.Services.CategoryServices.Concrete
+namespace Koton.Catalog.Business.Services.CategoryServices.Concrete
 {
     public class CategoryService(ICategoryRepository categoryRepository, IMapper mapper) : ICategoryService
     {
-        
+
         public async Task<Response<ResultCategoryDto>> GetCategoryByIdAsync(string id)
         {
             var categoryEntity = await categoryRepository.GetByIdAsync(id);
@@ -44,7 +41,7 @@ namespace Koton.Business.Services.CategoryServices.Concrete
             }
             catch (Exception ex)
             {
-                
+
                 return Response<bool>.Fail($"An error occurred: {ex.Message}", 500);
             }
         }
@@ -61,7 +58,7 @@ namespace Koton.Business.Services.CategoryServices.Concrete
             try
             {
                 var categoryEntity = mapper.Map<Category>(categoryDto);
-                
+
 
                 await categoryRepository.UpdateAsync(id, categoryEntity);
                 return Response<bool>.Succes(true, 200);

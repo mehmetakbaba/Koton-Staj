@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using Koton.Business.Services.ProductDetailServices.Abstract;
-using Koton.Core;
-using Koton.Core.Dtos.Concrete.CategoryDtos;
+﻿using AutoMapper;
+using Koton.Catalog.Business.Services.ProductDetailServices.Abstract;
+using Koton.Catalog.DataAccess.Repositories.MongoDb.ProductDetailRepository.Abstract;
+using Koton.Catalog.Entity.Entities.Concrete;
 using Koton.Core.Dtos.Concrete.ProdutDetailDtos;
-using Koton.DataAccess.Repositories.MongoDb.CategoryRepository.Abstract;
-using Koton.DataAccess.Repositories.MongoDb.CategoryRepository.Concrete;
-using Koton.DataAccess.Repositories.MongoDb.ProductDetailRepository.Abstract;
-using Koton.Entity.Entities.Concrete;
 
-namespace Koton.Business.Services.ProductDetailServices.Concrete
+using Koton.Shared.Response;
+
+namespace Koton.Catalog.Business.Services.ProductDetailServices.Concrete
 {
     public class ProductDetailService(IProductDetailRepository productDetailRepository, IMapper mapper) : IProductDetailDetailService
     {

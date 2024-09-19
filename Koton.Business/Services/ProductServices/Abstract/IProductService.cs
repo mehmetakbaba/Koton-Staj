@@ -1,5 +1,6 @@
-﻿using Koton.Core;
+﻿
 using Koton.Core.Dtos.Concrete.ProductDtos;
+using Koton.Shared.Response;
 
 namespace Koton.Business.Services.ProductServices.Abstract
 {
