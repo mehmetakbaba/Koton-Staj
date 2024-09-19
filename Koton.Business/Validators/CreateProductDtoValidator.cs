@@ -30,6 +30,11 @@ namespace Koton.Catalog.Business.Validators
         }
         private bool HaveMatchingStockTotal(CreateProductDto dto)
         {
+            if (dto.ProductSizeQuantity == null || !dto.ProductSizeQuantity.Any())
+            {
+                return dto.ProductAllQuantity == 0;
+            }
+
             int totalStock = dto.ProductSizeQuantity.Values.Sum();
             return totalStock == dto.ProductAllQuantity;
         }
