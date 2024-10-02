@@ -5,6 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader();  
+    });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -19,6 +30,7 @@ builder.Services.AddAutoMapperConfiguration();
 builder.Services.AddFluentValidationConfiguration();
 builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
 builder.Services.AddControllers(options => options.Filters.Add<FluentValidationFilter>());
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -28,6 +40,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowSpecificOrigin");
+
 app.UseAuthorization();
 app.MapControllers();
 

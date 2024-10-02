@@ -48,12 +48,14 @@ namespace Koton.Order.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ProductAmount = table.Column<int>(type: "int", nullable: false),
                     ProductTotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OrderingId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OrderingId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -62,8 +64,7 @@ namespace Koton.Order.Persistence.Migrations
                         name: "FK_OrderDetails_Orderings_OrderingId",
                         column: x => x.OrderingId,
                         principalTable: "Orderings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(

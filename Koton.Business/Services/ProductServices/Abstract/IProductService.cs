@@ -11,5 +11,6 @@ namespace Koton.Business.Services.ProductServices.Abstract
         Task<Response<bool>> AddProductAsync(CreateProductDto productDto);
         Task<Response<bool>> UpdateProductAsync(string id, UpdateProductDto productDto);
         Task<Response<bool>> DeleteProductAsync(string id);
+        Task<Response<IEnumerable<ResultProductDto>>> GetProductsByCategoryIdAsync(string categoryId);
     }
 }

@@ -88,5 +88,27 @@ namespace Koton.Catalog.Business.Services.ProductServices.Concrete
                 return Response<bool>.Fail($"An error occurred: {ex.Message}", 500);
             }
         }
+
+        public async Task<Response<IEnumerable<ResultProductDto>>> GetProductsByCategoryIdAsync(string categoryName)
+        {
+            try
+            {
+                var products = await productRepository.getProductsByCategoryId(categoryName);
+
+                if (products == null || !products.Any())
+                {
+                    return Response<IEnumerable<ResultProductDto>>.Fail("No products found for the specified category.", 404);
+                }
+
+                var productDtos = mapper.Map<IEnumerable<ResultProductDto>>(products);
+
+                return Response<IEnumerable<ResultProductDto>>.Succes(productDtos, 200);
+            }
+            catch (Exception ex)
+            {
+                return Response<IEnumerable<ResultProductDto>>.Fail($"An error occurred: {ex.Message}", 500);
+            }
+        }
+
     }
 }

@@ -27,7 +27,7 @@ namespace Koton.IdentityServer.Controllers
 
             var user = new ApplicationUser()
             {
-                UserName = userRegisterDto.UserName,
+                UserName = userRegisterDto.Email,
                 Email = userRegisterDto.Email,
                 Name = userRegisterDto.Name,
                 Surname = userRegisterDto.Surname

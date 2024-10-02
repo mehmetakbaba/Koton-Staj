@@ -12,7 +12,8 @@ namespace Koton.Order.Aplication.Features.CQRS.Handlers.OrderDetailHandlers
         public async Task Handler(UpdateOrderDetailCommand command)
         {
             var values = await _repository.GetByIdAsync(command.Id);
-            values.OrderingId = command.OrderingId;
+            values.UserId = command.UserId;
+            values.Address = command.Address;
             values.ProductAmount = command.ProductAmount;
             values.ProductId = command.ProductId;
             values.ProductName = command.ProductName;

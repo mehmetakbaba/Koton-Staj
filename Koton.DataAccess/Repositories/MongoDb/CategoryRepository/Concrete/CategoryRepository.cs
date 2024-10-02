@@ -36,5 +36,6 @@ namespace Koton.Catalog.DataAccess.Repositories.MongoDb.CategoryRepository.Concr
             var filter = Builders<Category>.Filter.Eq(c => c.Id, id);
             await _collection.DeleteOneAsync(filter);
         }
+
     }
 }

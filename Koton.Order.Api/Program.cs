@@ -10,6 +10,16 @@ builder.Services.AddDbContext<OrderContext>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddApplicationServices(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 //builder.Services.AddAuthorization(options =>
 //{
 //    options.AddPolicy("OrderPolicy", policy =>
@@ -47,7 +57,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowSpecificOrigin");
 app.UseAuthorization();
 
 app.MapControllers();

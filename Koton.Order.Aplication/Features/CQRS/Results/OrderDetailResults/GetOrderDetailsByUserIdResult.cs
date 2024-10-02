@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Koton.Order.Aplication.Features.CQRS.Commands.OrderDetailCommands
+namespace Koton.Order.Aplication.Features.CQRS.Results.OrderDetailResults
 {
-    public class CreateOrdeDetailCommand
+    public class GetOrderDetailsByUserIdResult
     {
         public int Id { get; set; }
         public string ProductId { get; set; }

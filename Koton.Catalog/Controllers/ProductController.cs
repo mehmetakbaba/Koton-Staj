@@ -65,5 +65,18 @@ namespace Koton.Catalog.Api.Controllers
 
             return StatusCode(response.StatusCode, response);
         }
+
+        [HttpGet("category/{categoryId}")]
+        public async Task<IActionResult> GetProductsByCategoryIdAsync(string categoryId)
+        {
+            var response = await productService.GetProductsByCategoryIdAsync(categoryId);
+
+            if (!response.IsSuccesful)
+            {
+                return StatusCode(response.StatusCode, response);
+            }
+
+            return Ok(response);
+        }
     }
 }

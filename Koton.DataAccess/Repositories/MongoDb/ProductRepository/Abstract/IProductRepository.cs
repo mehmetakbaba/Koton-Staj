@@ -5,5 +5,6 @@ namespace Koton.Catalog.DataAccess.Repositories.MongoDb.ProductRepository.Abstra
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
+        Task<List<Product>> getProductsByCategoryId(string categoryId);
     }
 }
