@@ -29,13 +29,16 @@ namespace IdentityServer
             services.AddLocalApiAuthentication();
             services.AddControllersWithViews();
 
+            // Database connection setup
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            // Identity configuration
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            // IdentityServer configuration
             var builder = services.AddIdentityServer(options =>
             {
                 options.Events.RaiseErrorEvents = true;
@@ -44,21 +47,34 @@ namespace IdentityServer
                 options.Events.RaiseSuccessEvents = true;
                 options.EmitStaticAudienceClaim = true;
             })
-                .AddInMemoryIdentityResources(Config.IdentityResources)
-                .AddInMemoryApiResources(Config.ApiResources)
-                .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryClients(Config.Clients)
-                .AddAspNetIdentity<ApplicationUser>();
+            .AddInMemoryIdentityResources(Config.IdentityResources)
+            .AddInMemoryApiResources(Config.ApiResources)
+            .AddInMemoryApiScopes(Config.ApiScopes)
+            .AddInMemoryClients(Config.Clients)
+            .AddAspNetIdentity<ApplicationUser>();
 
-            builder.AddDeveloperSigningCredential();
+            builder.AddDeveloperSigningCredential(); // Don't use this in production
 
+            // Google Authentication configuration
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
                     options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.ClientId = "copy client ID from Google here";
-                    options.ClientSecret = "copy client secret from Google here";
+                    options.ClientId = "copy client ID from Google here"; // Replace with actual Client ID
+                    options.ClientSecret = "copy client secret from Google here"; // Replace with actual Client Secret
                 });
+
+            // CORS configuration
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin", builder =>
+                {
+                    builder.WithOrigins("http://localhost:3000") // Allowed origin
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .AllowCredentials(); // Allow credentials if needed
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -68,15 +84,22 @@ namespace IdentityServer
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error"); // Generic error handling
+            }
 
             app.UseStaticFiles();
+
+            // CORS middleware
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseRouting();
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseAuthorization();
 
-            
+            // Role seeding
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 var services = scope.ServiceProvider;

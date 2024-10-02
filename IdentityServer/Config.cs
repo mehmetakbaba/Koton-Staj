@@ -6,6 +6,7 @@ namespace IdentityServer
 {
     public static class Config
     {
+
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
         {
             new ApiResource("ResourceCatalog")
@@ -27,13 +28,15 @@ namespace IdentityServer
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
+        
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
         {
-            new IdentityResources.OpenId(),
-            new IdentityResources.Email(),
-            new IdentityResources.Profile()
+            new IdentityResources.OpenId(),     
+            new IdentityResources.Email(),      
+            new IdentityResources.Profile()      
         };
 
+       
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
         {
             new ApiScope("CatalogFullPermission", "Full authority for catalog operations"),
@@ -41,26 +44,34 @@ namespace IdentityServer
             new ApiScope("DiscountFullPermission", "Full authority for discount operations"),
             new ApiScope("OrderFullPermission", "Full authority for order operations"),
             new ApiScope("BasketFullPermission", "Full authority for basket operations"),
-            new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
+            new ApiScope(IdentityServerConstants.LocalApi.ScopeName)  
         };
 
+       
         public static IEnumerable<Client> Clients => new Client[]
         {
             new Client
             {
                 ClientId = "KotonVisitorId",
                 ClientName = "Koton Shop Visitor User",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
-                ClientSecrets = { new Secret("kotonsecret".Sha256()) },
-                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission" }
+                AllowedGrantTypes = GrantTypes.ClientCredentials, 
+                ClientSecrets = { new Secret("kotonsecret".Sha256()) }, 
+                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission" } 
             },
             new Client
             {
                 ClientId = "KotonMemberId",
                 ClientName = "Koton Shop Member User",
-                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                ClientSecrets = { new Secret("kotonsecret".Sha256()) },
-                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission", "BasketFullPermission" }
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, 
+                ClientSecrets = { new Secret("kotonsecret".Sha256()) }, 
+                AllowedScopes = {
+                    "CatalogFullPermission",
+                    "DiscountFullPermission",
+                    "OrderFullPermission",
+                    "BasketFullPermission",
+                    "openid", 
+                    "profile" 
+                }
             }
         };
     }

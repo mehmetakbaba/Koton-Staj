@@ -1,27 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Koton.Order.Aplication.Features.CQRS.Results.OrderDetailResults;
 using Koton.Order.Aplication.Interfaces;
-using Koton.Order.Domain.Entities;
 using Koton.Order.Domain.Entities.Concrete;
 
 namespace Koton.Order.Aplication.Features.CQRS.Handlers.OrderDetailHandlers
 {
-    public class GetOrderDetailQueryHandler(IRepository<OrderDetail> repository)
+    public class GetOrderDetailQueryHandler
     {
-        private readonly IRepository<OrderDetail> _repository = repository;
+        private readonly IRepository<OrderDetail> _repository;
 
-        public async Task<List<GetOrderDetailQueryResult>> Handle()
+        // Constructor
+        public GetOrderDetailQueryHandler(IRepository<OrderDetail> repository)
         {
-            var values = await repository.GetAllAsync();
+            _repository = repository;
+        }
+
+        // Handle method with UserId parameter
+        public async Task<List<GetOrderDetailQueryResult>> Handle(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentException("UserId is required.", nameof(userId));
+            }
+
+            // UserId'ye göre değerleri al
+            var values = await _repository.GetByUserIdAsync(userId);
+
             return values.Select(x => new GetOrderDetailQueryResult()
             {
                 Id = x.Id,
                 ProductAmount = x.ProductAmount,
-                OrderingId = x.OrderingId,
+                UserId = x.UserId,
+                Address = x.Address,
                 ProductName = x.ProductName,
                 ProductId = x.ProductId,
                 ProductPrice = x.ProductPrice,

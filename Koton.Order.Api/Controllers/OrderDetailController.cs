@@ -23,11 +23,12 @@ namespace Koton.Order.Api.Controllers
         private readonly UpdateOrderDetailCommandHandler _updateOrderDetailCommandHandler = updateOrderDetailCommandHandler;
 
         [HttpGet]
-        public async Task<IActionResult> OrderDetailList()
+        public async Task<IActionResult> OrderDetailList([FromQuery] string userId) // userId'yi sorgu parametresi olarak ekledik
         {
-            var values = await _getOrderDetailQueryHandler.Handle();
+            var values = await _getOrderDetailQueryHandler.Handle(userId);
             return Ok(values);
         }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderDetailById(int id)
         {

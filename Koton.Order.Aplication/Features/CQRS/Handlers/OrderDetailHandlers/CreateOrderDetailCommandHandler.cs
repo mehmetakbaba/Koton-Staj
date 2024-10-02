@@ -23,7 +23,8 @@ namespace Koton.Order.Aplication.Features.CQRS.Handlers.OrderDetailHandlers
                     Id = command.Id,
                     ProductId = command.ProductId,
                     ProductPrice = command.ProductPrice,
-                    OrderingId = command.OrderingId,
+                    UserId = command.UserId,
+                    Address = command.Address,
                     ProductTotalPrice = command.ProductTotalPrice,
                 });
         }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Koton.Order.Persistence.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20240917110304_mig1")]
+    [Migration("20241002093514_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -62,14 +62,19 @@ namespace Koton.Order.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("OrderingId")
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OrderingId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductAmount")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
@@ -80,6 +85,10 @@ namespace Koton.Order.Persistence.Migrations
 
                     b.Property<decimal>("ProductTotalPrice")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -113,13 +122,9 @@ namespace Koton.Order.Persistence.Migrations
 
             modelBuilder.Entity("Koton.Order.Domain.Entities.Concrete.OrderDetail", b =>
                 {
-                    b.HasOne("Koton.Order.Domain.Entities.Concrete.Ordering", "Ordering")
+                    b.HasOne("Koton.Order.Domain.Entities.Concrete.Ordering", null)
                         .WithMany("OrderDetails")
-                        .HasForeignKey("OrderingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Ordering");
+                        .HasForeignKey("OrderingId");
                 });
 
             modelBuilder.Entity("Koton.Order.Domain.Entities.Concrete.Ordering", b =>
